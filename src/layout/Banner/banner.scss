@@ -1,0 +1,21 @@
+.banner_home {
+  .slick-prev {
+    inset-inline-start: 0;
+    z-index: 5;
+    color: white;
+    font-size: 30px;
+
+    &::before {
+      font-size: 0;
+    }
+  }
+
+  .slick-next {
+    inset-inline-end: 5px;
+
+    &::before {
+      font-size: 30px;
+      color: white;
+    }
+  }
+}
