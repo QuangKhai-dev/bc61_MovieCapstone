@@ -1,0 +1,14 @@
+.he_thong_lich_chieu {
+  @apply mt-20 py-20;
+
+  .ant-tabs {
+    .ant-tabs-ink-bar {
+      @apply bg-green-500;
+    }
+
+    .ant-tabs-tabpane {
+      padding-left: 0 !important;
+    }
+  }
+
+}

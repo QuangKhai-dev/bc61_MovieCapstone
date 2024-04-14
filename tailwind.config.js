@@ -6,6 +6,9 @@ export default {
       container: {
         center: true,
       },
+      colors: {
+        'red-pro': '#E62B4A',
+      },
     },
   },
   plugins: [],
