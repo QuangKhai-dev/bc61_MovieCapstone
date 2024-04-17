@@ -4,7 +4,14 @@ import InputText from '../../Input/InputText/InputText';
 import * as Yup from 'yup';
 import { quanLyNguoiDungServ } from '../../../services/quanLyNguoiDungServ';
 import { AlertContext } from '../../../App';
+import { useNavigate } from 'react-router-dom';
+import { path } from '../../../common/path';
+import { handleSetValueLocalStore } from '../../../utils/utils';
+import { useDispatch } from 'react-redux';
+import { handleGetValue } from '../../../redux/slice/userSlice';
 const FormLogin = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { handleAlert } = useContext(AlertContext);
   const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
     useFormik({
@@ -18,6 +25,9 @@ const FormLogin = () => {
           const res = await quanLyNguoiDungServ.dangNhap(values);
           console.log(res);
           handleAlert('success', 'Đăng nhập thành công');
+          navigate(path.trangChu);
+          handleSetValueLocalStore('dataUser', res.data.content);
+          dispatch(handleGetValue(res.data.content));
         } catch (error) {
           console.log(error);
           handleAlert('error', error.response.data.content);
