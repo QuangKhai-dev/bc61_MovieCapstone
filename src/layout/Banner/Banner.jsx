@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Carousel } from 'antd';
 import { quanLyPhimServ } from '../../services/quanLyPhimServ';
 import './banner.scss';
+import { useDispatch } from 'react-redux';
+import {
+  handleTurnOffLoading,
+  handleTurnOnLoading,
+} from '../../redux/slice/loadingSlice';
 
 const PrevArrow = props => {
   const { className, style, onClick } = props;
@@ -13,16 +18,20 @@ const PrevArrow = props => {
 };
 
 const Banner = () => {
+  const dispatch = useDispatch();
   const [arrBanner, setArrBanner] = useState([]);
   useEffect(() => {
+    dispatch(handleTurnOnLoading());
     quanLyPhimServ
       .layDanhSachBanner()
       .then(res => {
         console.log(res);
-        setArrBanner(res.data.content);
+        setArrBanner(res.data.content); // [{"hinhAnh","tenBanner"}]
+        dispatch(handleTurnOffLoading());
       })
       .catch(err => {
         console.log(err);
+        dispatch(handleTurnOffLoading());
       });
   }, []);
   return (

@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { quanLyPhimServ } from '../../services/quanLyPhimServ';
 import './listMovie.scss';
+import { getMovieApiThunk } from '../../redux/slice/phimSlice';
 const ListMovie = () => {
-  const [arrMovie, setArrMovie] = useState([]);
+  const dispatch = useDispatch();
+  const { arrMovie } = useSelector(state => state.phimSlice);
+  // const [arrMovie, setArrMovie] = useState([]);
 
   useEffect(() => {
-    quanLyPhimServ
-      .layDanhSachPhim()
-      .then(res => {
-        console.log(res);
-        setArrMovie(res.data.content);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    dispatch(getMovieApiThunk('1'));
+    // quanLyPhimServ
+    //   .layDanhSachPhim()
+    //   .then(res => {
+    //     console.log(res);
+    //     setArrMovie(res.data.content);
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }, []);
 
   return (

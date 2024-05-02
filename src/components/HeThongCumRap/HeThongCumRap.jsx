@@ -11,7 +11,7 @@ const HeThongCumRap = ({ maHeThongRap }) => {
     quanLyRapServ
       .layThongTinLichChieuHeThongRap(maHeThongRap)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         setArrCumRap(res.data.content[0].lstCumRap);
       })
       .catch(err => {
@@ -29,7 +29,7 @@ const HeThongCumRap = ({ maHeThongRap }) => {
           height: '600px',
         }}
         items={arrCumRap.map((cumRap, index) => {
-          console.log(cumRap);
+          // console.log(cumRap);
           return {
             label: (
               <div key={index} className="text-left w-[250px]">

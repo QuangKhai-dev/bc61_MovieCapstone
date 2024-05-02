@@ -43,6 +43,10 @@ const useRouteCustom = () => {
         },
       ],
     },
+    {
+      path: '*',
+      element: <div>Not found</div>,
+    },
   ]);
   return route;
 };

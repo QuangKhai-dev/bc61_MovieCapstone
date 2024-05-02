@@ -7,4 +7,7 @@ export const quanLyPhimServ = {
   layDanhSachPhim: () => {
     return http.get('/QuanLyPhim/LayDanhSachPhim?maNhom=GP01');
   },
+  themPhimUploadHinh: data => {
+    return http.post('/QuanLyPhim/ThemPhimUploadHinh', data);
+  },
 };
